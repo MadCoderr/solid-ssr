@@ -1,5 +1,5 @@
-import { Component } from 'solid-js';
-import { For, createStore } from 'solid-js/store';
+import { Component, For } from 'solid-js';
+import { createStore } from 'solid-js/store';
 
 interface Item {
   id: number;
