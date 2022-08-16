@@ -1,5 +1,6 @@
 import { Component, For } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { autoAnimate } from 'solid-auto-animate';
 
 interface Item {
   id: number;
@@ -7,6 +8,8 @@ interface Item {
 }
 
 const App: Component = () => {
+  autoAnimate;
+
   let inputRef: any;
   const [items, setItems] = createStore<Item[]>([]);
 
@@ -44,21 +47,21 @@ const App: Component = () => {
         Add item
       </button>
 
-      <For each={items}>
-        {(item: Item) => {
-          const { id, title } = item;
-          return (
-            <ul class="list">
+      <ul class="list" use:autoAnimate>
+        <For each={items}>
+          {(item: Item) => {
+            const { id, title } = item;
+            return (
               <li>
                 <span class="label">{title}</span>
                 <span class="delete-btn" onClick={() => removeItem(id)}>
                   X
                 </span>
               </li>
-            </ul>
-          );
-        }}
-      </For>
+            );
+          }}
+        </For>
+      </ul>
     </div>
   );
 };
