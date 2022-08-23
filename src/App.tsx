@@ -18,7 +18,7 @@ const App: Component = () => {
       setItems([
         ...items,
         {
-          id: Math.random(),
+          id: Math.random() * 100,
           title: inputRef.value,
         },
       ]);
